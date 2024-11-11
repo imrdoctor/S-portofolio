@@ -1,85 +1,83 @@
-"use client";
+'use client';
 
-import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const greetings = [
-  "مـرحـبـاً",
-  "Hello",
-  "こんにちは",
-  "Bonjour",
-  "안녕하세요",
-  "Hallo",
-  "नमस्ते",
-  "Ciao",
-  "নমস্কার",
+  { text: 'مرحبا', language: 'Arabic' },
+  { text: 'Hello', language: 'English' },
+  { text: 'नमस्ते', language: 'Hindi' },
+  { text: 'Ciao', language: 'Italian' },
+  { text: '你好', language: 'Chinese' },
+  { text: 'Bonjour', language: 'French' },
+  { text: 'Hola', language: 'Spanish' },
+  { text: '안녕하세요', language: 'Korean' },
+  { text: 'Hallo', language: 'German' },
 ];
-
 type HelloProps = {
   onEnd?: () => void;
 };
 
 const Hello: React.FC<HelloProps> = ({ onEnd }) => {
-  const [currentGreeting, setCurrentGreeting] = useState(0);
-  const [isSlideOut, setIsSlideOut] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleEnd = useCallback(() => {
     if (onEnd) onEnd();
   }, [onEnd]);
 
   useEffect(() => {
-    if (isSlideOut) return;
+    if (currentIndex < greetings.length) {
+      const timer = setTimeout(() => {
+        setCurrentIndex(currentIndex + 1);
+      }, getDuration(currentIndex));
 
-    const greetingInterval = setInterval(() => {
-      setCurrentGreeting((prev) => {
-        const nextGreeting = prev + 1;
-        return nextGreeting < greetings.length ? nextGreeting : prev;
-      });
-    }, 200);
-
-    const finishTimer = setTimeout(() => {
-      setIsSlideOut(true);
+      return () => clearTimeout(timer);
+    } else {
+      setIsComplete(true);
       setTimeout(() => {
         handleEnd();
       }, 900);
-    }, greetings.length * 200);
+    }
+  }, [currentIndex]);
 
-    return () => {
-      clearInterval(greetingInterval);
-      clearTimeout(finishTimer);
-    };
-  }, [isSlideOut, handleEnd]);
+  const getDuration = (index: number): number => {
+    if (index < greetings.length - 1 && index !== 0) {
+      return 200;
+    } else {
+      return 1000;
+    }
+  };
 
   return (
     <AnimatePresence>
-      <motion.section
-        className="flex items-center justify-center h-screen bg-[#ffffff] load-shadow"
-        key="intro-section"
-        initial={{ y: 0 }}
-        animate={{ y: isSlideOut ? "-100%" : 0 }}
-        exit={{ y: "-100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentGreeting}
-            initial={{ opacity: currentGreeting === 0 ? 0 : 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            transition={currentGreeting === 0 ? { duration: 0.7 } : { duration: 0 }}
-            style={{
-              fontSize: "4rem",
-              color: "black",
-              backgroundImage:
-                "linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8))",
-              fontFamily:
-                greetings[currentGreeting] === "مـرحـبـاً" ? "Cairo, sans-serif" : "var(--font-poppins)",
-            }}
-          >
-            {greetings[currentGreeting]}
-          </motion.div>
-        </AnimatePresence>
-      </motion.section>
+      {!isComplete && (
+        <motion.div
+          className="fixed inset-0 z-20 bg-[#f0f0f0] text-[#000]"
+          initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
+          exit={{
+            y: '-100%',
+            borderBottomLeftRadius: '100%',
+            borderBottomRightRadius: '100%',
+          }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
+        >
+          <div className="flex h-screen items-center justify-center">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="text-8xl"
+              style={{
+                fontFamily: greetings[currentIndex]?.language === "Arabic" ? "Cairo, sans-serif" : null,
+              }}
+            >
+              {greetings[currentIndex]?.text || ''}
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };
