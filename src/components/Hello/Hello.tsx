@@ -53,7 +53,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
   return (
     <AnimatePresence>
       <motion.section
-        className="flex items-center justify-center h-screen bg-[#010101] load-shadow"
+        className="flex items-center justify-center h-screen bg-[#ffffff] load-shadow"
         key="intro-section"
         initial={{ y: 0 }}
         animate={{ y: isSlideOut ? "-100%" : 0 }}
@@ -69,11 +69,9 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
             transition={currentGreeting === 0 ? { duration: 0.7 } : { duration: 0 }}
             style={{
               fontSize: "4rem",
-              color: "transparent",
+              color: "black",
               backgroundImage:
                 "linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8))",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
               fontFamily:
                 greetings[currentGreeting] === "مـرحـبـاً" ? "Cairo, sans-serif" : "var(--font-poppins)",
             }}
