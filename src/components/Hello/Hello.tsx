@@ -53,12 +53,12 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
     <AnimatePresence>
       {!isComplete && (
         <motion.div
-          className="fixed inset-0 z-20 bg-[#f0f0f0] text-[#000]"
+          className="fixed inset-0 z-20 bg-[#e2e2e2] text-[#000]"
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
             y: '-100%',
-            borderBottomLeftRadius: '100%',
-            borderBottomRightRadius: '100%',
+            borderBottomLeftRadius: '50%',
+            borderBottomRightRadius: '50%',
           }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
@@ -68,7 +68,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-8xl"
+              className="text-6xl"
               style={{
                 fontFamily: greetings[currentIndex]?.language === "Arabic" ? "Cairo, sans-serif" : undefined,
               }}
