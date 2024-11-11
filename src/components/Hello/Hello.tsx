@@ -70,7 +70,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
               transition={{ duration: 0.3 }}
               className="text-8xl"
               style={{
-                fontFamily: greetings[currentIndex]?.language === "Arabic" ? "Cairo, sans-serif" : null,
+                fontFamily: greetings[currentIndex]?.language === "Arabic" ? "Cairo, sans-serif" : undefined,
               }}
             >
               {greetings[currentIndex]?.text || ''}
