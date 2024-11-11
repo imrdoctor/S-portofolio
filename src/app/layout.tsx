@@ -27,6 +27,8 @@ export const metadata = {
     description: "Front End Developer Portfolio",
     site_name: "Mohamed Portfolio", 
     themeColor: "#000000",
+    type: "website",
+    url: "https://0dev.vercel.app/",    
     images: [ 
       {
         url: "https://media.discordapp.net/attachments/668451315348930571/1305393871156416562/New_Bitmap_image_-_Copy.png?ex=6732de47&is=67318cc7&hm=9964ac1861f84cfb1b2da4a59273a11ce0c3b4359fd8011e29c3acdfe45d090e",
