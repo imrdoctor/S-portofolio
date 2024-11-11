@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Viewport } from 'next';
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#6366f1",
 };
 
 const poppins = localFont({
@@ -25,7 +25,7 @@ export const metadata = {
     title: "Portfolio App",
     description: "Front End Developer Portfolio",
     site_name: "Mohamed Portfolio",
-    themeColor: "#000000",
+    themeColor: "#6366f1",
     type: "website",
     url: "https://0dev.vercel.app/",
     images: [
