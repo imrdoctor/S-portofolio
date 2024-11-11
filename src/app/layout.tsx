@@ -25,9 +25,11 @@ export const metadata = {
   openGraph: {
     title: "Portfolio App",
     description: "Front End Developer Portfolio",
-    images: [
+    site_name: "Mohamed Portfolio", 
+    themeColor: "#000000",
+    images: [ 
       {
-        url: "https://media.discordapp.net/attachments/668451315348930571/1305393871156416562/New_Bitmap_image_-_Copy.png?ex=6732de47&is=67318cc7&hm=9964ac1861f84cfb1b2da4a59273a11ce0c3b4359fd8011e29c3acdfe45d090e", // استبدل بالرابط الصحيح
+        url: "https://media.discordapp.net/attachments/668451315348930571/1305393871156416562/New_Bitmap_image_-_Copy.png?ex=6732de47&is=67318cc7&hm=9964ac1861f84cfb1b2da4a59273a11ce0c3b4359fd8011e29c3acdfe45d090e",
         width: 800,
         height: 600,
         alt: "Portfolio Preview Image",
@@ -38,9 +40,12 @@ export const metadata = {
     card: "summary_large_image",
     title: "Portfolio App",
     description: "Front End Developer Portfolio",
-    images: ["https://media.discordapp.net/attachments/668451315348930571/1305393871156416562/New_Bitmap_image_-_Copy.png?ex=6732de47&is=67318cc7&hm=9964ac1861f84cfb1b2da4a59273a11ce0c3b4359fd8011e29c3acdfe45d090e"], // استبدل بالرابط الصحيح
+    images: [
+      "https://media.discordapp.net/attachments/668451315348930571/1305393871156416562/New_Bitmap_image_-_Copy.png?ex=6732de47&is=67318cc7&hm=9964ac1861f84cfb1b2da4a59273a11ce0c3b4359fd8011e29c3acdfe45d090e",
+    ],
   },
 };
+
 
 export default function RootLayout({
   children,
