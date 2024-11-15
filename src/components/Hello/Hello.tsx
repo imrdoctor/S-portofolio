@@ -21,7 +21,7 @@ type HelloProps = {
 const Hello: React.FC<HelloProps> = ({ onEnd }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-
+// now (onEnd) not use but dont remove it
   const handleEnd = useCallback(() => {
     if (onEnd) onEnd();
   }, [onEnd]);
@@ -37,7 +37,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
       setIsComplete(true);
       setTimeout(() => {
         handleEnd();
-      }, 900);
+      }, 1510);
     }
   }, [currentIndex]);
 
@@ -54,11 +54,15 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
       {!isComplete && (
         <motion.div
           className="fixed inset-0 z-20 bg-[#e2e2e2] text-[#000]"
+          // className="fixed inset-0 z-20 bg-[#000] text-[#e2e2e2]"
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
             y: '-100%',
-            borderBottomLeftRadius: '50%',
-            borderBottomRightRadius: '50%',
+            // borderBottomLeftRadius: '100%',
+            // borderBottomRightRadius: '100%',
+            // in start he up fast in end he up slow
+            // in start he up fast in end he up slow
+            transition: { duration: 1.5, ease: 'easeInOut' },            
           }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
