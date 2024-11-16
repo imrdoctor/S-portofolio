@@ -23,8 +23,7 @@ function Hero() {
         </h1>
         {/* Subtitle */}
         <p className="mt-4 text-neutral-300 text-center text-lg max-w-xl">
-          Crafting stunning, responsive, and user-centric web designs that
-          deliver exceptional experiences. Let's shape the web together!
+          We are a team of passionate developers dedicated to crafting
         </p>
       </div>
     </>
