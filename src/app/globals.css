@@ -54,3 +54,7 @@ body {
 .burger-icon.open .line:nth-child(3) {
   transform: translateY(-7.5px) rotate(-45deg);
 }
+
+.highline{
+  line-height: 8rem !important;
+}
