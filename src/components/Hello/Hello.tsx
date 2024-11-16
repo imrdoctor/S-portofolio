@@ -50,10 +50,11 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
   };
 
   return (
+    
     <AnimatePresence>
       {!isComplete && (
         <motion.div
-          className="fixed inset-0 z-20 bg-[#e2e2e2] text-[#000]"
+          className="fixed inset-0 bg-[#e2e2e2] text-[#000] z-[9999999999999]"
           // className="fixed inset-0 z-20 bg-[#000] text-[#e2e2e2]"
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
