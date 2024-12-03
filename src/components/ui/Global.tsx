@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
-const cn = (...args: any[]) => {
+const cn = (...args: unknown[]) => {
   return twMerge(clsx(args));
 };
 
@@ -38,10 +38,10 @@ export const Globe = ({
   className?: string;
   config?: COBEOptions;
 }) => {
-  let phi = 0;
-  let width = 0;
+  const phiRef = useRef(0);
+  const widthRef = useRef(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerInteracting = useRef(null);
+  const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
   const [{ r }, api] = useSpring(() => ({
     r: 0,
@@ -53,12 +53,14 @@ export const Globe = ({
     },
   }));
 
-  const updatePointerInteraction = (value: any) => {
+  const updatePointerInteraction = (value: number | null) => {
     pointerInteracting.current = value;
-    canvasRef.current!.style.cursor = value ? "grabbing" : "grab";
+    if (canvasRef.current) {
+      canvasRef.current.style.cursor = value ? "grabbing" : "grab";
+    }
   };
 
-  const updateMovement = (clientX: any) => {
+  const updateMovement = (clientX: number) => {
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current;
       pointerInteractionMovement.current = delta;
@@ -67,18 +69,18 @@ export const Globe = ({
   };
 
   const onRender = useCallback(
-    (state: Record<string, any>) => {
-      if (!pointerInteracting.current) phi += 0.005;
-      state.phi = phi + r.get();
-      state.width = width * 2;
-      state.height = width * 2;
+    (state: Record<string, unknown>) => {
+      if (!pointerInteracting.current) phiRef.current += 0.005;
+      state.phi = phiRef.current + r.get();
+      state.width = widthRef.current * 2;
+      state.height = widthRef.current * 2;
     },
-    [pointerInteracting, phi, r]
+    [pointerInteracting, r]
   );
 
   const onResize = () => {
     if (canvasRef.current) {
-      width = canvasRef.current.offsetWidth;
+      widthRef.current = canvasRef.current.offsetWidth;
     }
   };
 
@@ -88,26 +90,27 @@ export const Globe = ({
 
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
+      width: widthRef.current * 2,
+      height: widthRef.current * 2,
       onRender,
     });
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"));
-    return () => globe.destroy();
-  }, []);
+    setTimeout(() => {
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = "1";
+      }
+    });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      globe.destroy();
+    };
+  }, [config, onRender]);
 
   return (
-    <div
-      className={cn(
-        "aspect-[1/1] w-full max-w-[600px]",
-        className
-      )}
-    >
+    <div className={cn("aspect-[1/1] w-full max-w-[600px]", className)}>
       <canvas
-        className={cn(
-          "h-full w-full opacity-0 flex justify-center items-center",
-        )}
+        className={cn("h-full w-full opacity-0 flex justify-center items-center")}
         ref={canvasRef}
         onPointerDown={(e) =>
           updatePointerInteraction(
