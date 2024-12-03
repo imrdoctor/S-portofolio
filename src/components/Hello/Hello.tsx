@@ -54,7 +54,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
     <AnimatePresence>
       {!isComplete && (
         <motion.div
-          className="fixed inset-0 bg-[#e2e2e2] text-[#000] z-[9999999999999]"
+          className="fixed inset-0 bg-gradient-to-b from-white to-gray-300 text-[#0e0d0d] z-[9999999999999]"
           // className="fixed inset-0 z-20 bg-[#000] text-[#e2e2e2]"
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
@@ -67,7 +67,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
           }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
-          <div className="flex h-screen items-center justify-center">
+          <div className="flex h-screen items-center justify-center ">
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0 }}

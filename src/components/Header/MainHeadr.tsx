@@ -29,10 +29,10 @@ function MainHeadr() {
   }, []);
 
   return (
-    <div className="container px-4 mx-auto sm:px-[10%]">
+    <div className="container mx-auto sm:px-[10%]">
       <div
         className={`flex justify-between items-center py-5 px-4 my-2 rounded-[100px] transition-all duration-300 ${
-          isBlurred ? "backdrop-blur-lg bg-[#3c3c494d] shadow-lg" : "bg-transparent"
+          isBlurred ? "backdrop-blur-lg bg-[#3c3c494d] shadow-lg" : "background-transparent"
         }`}
       >
         {" "}

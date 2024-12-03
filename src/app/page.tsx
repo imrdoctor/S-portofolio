@@ -17,17 +17,19 @@ export default function Home() {
     <>
       <>
         {showIntro ? (
-          <Hello  onEnd={handleIntroEnd} />
+          <Hello onEnd={handleIntroEnd} />
         ) : (
-         <>
-                     <GotoLinkden show={show} setShow={setShow} />
+          <>
+            <GotoLinkden show={show} setShow={setShow} />
             <div
-              className={show ? "sticky top-2 z-[9999]" : "fixed top-0 left-0 right-0 "}
+              className={
+                show ? "sticky top-2 z-[9999]" : "fixed top-0 left-0 right-0 "
+              }
             >
-               <MainHeadr />
+              <MainHeadr />
             </div>
             {/* <MobileHeadr /> */}
-            <Hero /> 
+            <Hero />
           </>
         )}
       </>

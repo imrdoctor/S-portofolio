@@ -13,6 +13,9 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      fontSize: {
+        '6xl': ['3.75rem', '3'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
