@@ -29,7 +29,7 @@ function MainHeadr() {
   }, []);
 
   return (
-    <div className="container mx-auto sm:px-[10%]">
+    <div className="container mx-auto sm:px-[10%] z-auto">
       <div
         className={`flex justify-between items-center py-5 px-4 my-2 rounded-[100px] transition-all duration-300 ${
           isBlurred ? "backdrop-blur-lg bg-[#3c3c494d] shadow-lg" : "background-transparent"
@@ -54,13 +54,13 @@ function MainHeadr() {
           </Drawer.Trigger>
 
           <Drawer.Portal>
-            <Drawer.Overlay className="fixed inset-0 bg-black/40 sm:hidden" />
-            <Drawer.Content className="backdrop-blur-lg bg-[#16161ee0] shadow-lg flex flex-col rounded-t-[30px] mt-24 h-fit fixed bottom-0 left-0 right-0 sm:hidden">
-              <div className="p-4">
-                <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-[#282832] mb-8" />
-                <div className="w-full">
+            <Drawer.Overlay className="fixed inset-0 bg-black/40 sm:hidden " />
+            <Drawer.Content className="backdrop-blur-lg bg-[#16161ee0] z-[9999999999] shadow-lg flex flex-col rounded-t-[30px] mt-24 h-fit fixed bottom-0 left-0 right-0 sm:hidden">
+              <div className="p-4 ">
+                <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-[#282832] mb-8 " />
+                <div className="w-full ">
                   <a href="#">
-                    <div className="p-3 text-[#a0a0aa] hover:bg-[#282832] hover:text-white rounded-md flex items-center gap-3 transition-colors duration-200">
+                    <div className="p-3 text-[#a0a0aa] hover:bg-[#282832]  hover:text-white rounded-md flex items-center gap-3 transition-colors duration-200">
                       <FontAwesomeIcon className="text-lg" icon={faHouse} />
                       <span className="text-base font-medium">Home</span>
                     </div>
