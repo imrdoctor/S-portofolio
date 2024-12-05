@@ -6,19 +6,21 @@ import Global from "@/components/Global/Global";
 function Hero() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-6 h-[65vh]">
-        <Spotlight className="top-[-60px] md:left-0 md:-top-10" fill="white" />
-        <BackgroundParticles
+    <div>
+    <BackgroundParticles
           className="absolute inset-0"
           quantity={100}
           ease={40}
           color="#ffffff"
           refresh
         />
+    <Spotlight className="top-[-60px] md:left-0 md:-top-10" fill="white" />
+    </div>
+      <div className="flex flex-col items-center justify-center gap-6 h-[65vh] relative ">
         <div className="container mx-auto px-4  mb-36">
           <div className="container mx-auto px-4">
             <h1
-              className="text-3xl z sm:text-4xl md:text-5xl overflow-visible h-[111px] lg:text-7xl xl:text-8xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-b from-gray-400 to-gray-200  leading-snug sm:leading-normal md:leading-relaxed "
+              className="h-[75px] text-2xl z sm:text-3xl md:text-5xl overflow-visible md:h-[111px] lg:h-[130px] lg:text-6xl xl:text-8xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-b from-gray-400 to-gray-200  leading-snug sm:leading-normal md:leading-relaxed "
             >
               Designing the Future of Web
             </h1>
@@ -29,8 +31,9 @@ function Hero() {
             </h1>
           </div>
         </div>
-      </div>
+        
         <Global />
+      </div>
     </>
   );
 }
