@@ -59,10 +59,8 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
             y: '-100%',
-            // borderBottomLeftRadius: '100%',
-            // borderBottomRightRadius: '100%',
-            // in start he up fast in end he up slow
-            // in start he up fast in end he up slow
+            borderBottomLeftRadius: '100%',
+            borderBottomRightRadius: '100%',
             transition: { duration: 1.5, ease: 'easeInOut' },            
           }}
           transition={{ duration: 1, ease: 'easeInOut' }}
