@@ -21,14 +21,13 @@ export default function GotoLinkden({ show, setShow } : AnimatedGradientTextDemo
     <AnimatePresence>
       {show && (
         <motion.div
-          className="relative"
+          className="hidden sm:block"
           initial={{ opacity: 1}}
           animate={{ opacity: 1}}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}> 
-          <div >
-          <div className="relative z-10 bg-gradient-to-r from-[#ec4899] via-[#a855f7] to-[#6366f1]  py-1 flex items-center justify-center shadow-lg">
-            <a target="_blank" href="#">
+          <div className="relative z-10 bg-gradient-to-r from-[#ec4899] via-[#a855f7] to-[#6366f1] py-1 flex items-center justify-center shadow-lg ">
+          <a target="_blank" href="#">
               <AnimatedGradientText>
                 <FontAwesomeIcon
                   icon={faLinkedin}
@@ -46,7 +45,6 @@ export default function GotoLinkden({ show, setShow } : AnimatedGradientTextDemo
                 <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-white" />
               </AnimatedGradientText>
             </a>
-          </div>
           </div>
           <div onClick={handleHide}  className="absolute right-3 top-2 w-5 h-5 flex justify-center items-center cursor-pointer z-10 border rounded-full  hover:border-white p-3 ">
             <FontAwesomeIcon 

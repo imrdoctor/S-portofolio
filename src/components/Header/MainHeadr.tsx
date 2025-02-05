@@ -9,7 +9,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Drawer } from "vaul";
 import React from "react";
-
+import Image from "next/image";
+import avatar from "@/app/assets/photo.png"
 function MainHeadr() {
   const [isBlurred, setIsBlurred] = useState(false);
 
@@ -31,23 +32,28 @@ function MainHeadr() {
   return (
     <div className="container mx-auto sm:px-[10%] z-auto">
       <div
-        className={`flex justify-between items-center py-5 px-4 my-2 rounded-[100px] transition-all duration-300 ${
+        className={`flex justify-between items-center p-2 px-4 my-2 rounded-[100px] transition-all duration-300 ${
           isBlurred ? "backdrop-blur-lg bg-[#3c3c494d] shadow-lg" : "background-transparent"
         }`}
       >
         {" "}
-        <div className="flex gap-4 text-white">
-          <div>logo</div>
+        <div className="flex text-white items-center justify-between w-full">
+          <div className="flex flex-row items-center gap-3">
+            <Image src={avatar} alt="profile"   className="w-10 h-10 rounded-full shadow-[0_0_0_1.5px_#7777ef]"  />
+            <div className="hidden sm:block">
+              <h1 className="text-sm font-semibold">Mohamed</h1>
+              <p className="text-gray-400">FullStack Devloper</p>
+            </div>
+          
+
+          </div>
           <div className="gap-4 hidden sm:flex">
             <a href="#">Home</a>
             <a href="#">Explore</a>
             <a href="#">Notifications</a>
           </div>
         </div>
-        <div className="hidden sm:flex gap-4 text-white">
-          <div className="">language</div>
-          <div className="">contact</div>
-        </div>
+
         <Drawer.Root modal={false}>
           <Drawer.Trigger className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#161615] text-white">
             <span className="text-xl">☰</span>

@@ -20,8 +20,8 @@ export default function Home() {
           <Hello onEnd={handleIntroEnd} />
         ) : (
           <>
-            <GotoLinkden show={show} setShow={setShow} />
-            <div
+          <GotoLinkden show={show} setShow={setShow} />
+          <div
               className={show ? "sticky top-2 z-[9999]" : "fixed top-0 left-0 right-0 "}>
               <MainHeadr />
             </div>

@@ -58,6 +58,7 @@ const Hello: React.FC<HelloProps> = ({ onEnd }) => {
           // className="fixed inset-0 z-20 bg-[#000] text-[#e2e2e2]"
           initial={{ y: 0, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
           exit={{
+            // x: '-100%',
             y: '-100%',
             borderBottomLeftRadius: '100%',
             borderBottomRightRadius: '100%',
