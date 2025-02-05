@@ -21,7 +21,7 @@ export default function GotoLinkden({ show, setShow } : AnimatedGradientTextDemo
     <AnimatePresence>
       {show && (
         <motion.div
-          className="hidden sm:block"
+          className=""
           initial={{ opacity: 1}}
           animate={{ opacity: 1}}
           exit={{ opacity: 0 }}
@@ -40,7 +40,8 @@ export default function GotoLinkden({ show, setShow } : AnimatedGradientTextDemo
                     `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
                   )}
                 >
-                  Connect on LinkedIn
+                  <span className="hidden sm:block">Connect on linkedin </span>
+                  <span className="block sm:hidden">linkedin </span>
                 </span>
                 <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-white" />
               </AnimatedGradientText>
